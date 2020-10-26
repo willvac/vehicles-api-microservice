@@ -18,3 +18,14 @@ after_success:
     - docker push willvac/vehicles-api
 
 
+deploy:
+    provider: elasticbeanstalk
+    region: us-west-1
+    app: vehicles-api
+    env: VehiclesApi-env
+    bucket_name: elasticbeanstalk-us-west-1-414250210524
+    bucket_path: vehicles-api
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
