@@ -30,6 +30,7 @@ public class Car {
 
     @NotNull
     @Enumerated(EnumType.STRING)
+    @Column(name = "carcondition")
     private Condition condition;
 
     @Valid
