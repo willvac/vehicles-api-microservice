@@ -40,7 +40,7 @@ public class MapsClient {
         try {
             Address address = client
                     .get()
-                    .uri("http://boggle-maps/maps" + "?lat=" + location.getLat() + "&lon=" + location.getLon())
+                    .uri(mapServiceApplicationName + "/maps" + "?lat=" + location.getLat() + "&lon=" + location.getLon())
                     .retrieve().bodyToMono(Address.class).block();
 
             mapper.map(Objects.requireNonNull(address), location);
