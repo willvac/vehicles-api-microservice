@@ -1,0 +1,9 @@
+FROM maven:amazoncorretto
+WORKDIR /vehicles-api
+COPY ./ ./
+RUN mvn clean install
+
+FROM amazoncorretto:11
+WORKDIR /vehicles-api
+COPY --from=0 /vehicles-api/target/vehicles-api-0.0.1-SNAPSHOT.jar ./
+CMD ["java","-jar", "vehicles-api-0.0.1-SNAPSHOT.jar"]
